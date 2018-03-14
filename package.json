@@ -1,0 +1,29 @@
+{
+  "name": "multitouch",
+  "version": "0.0.1",
+  "description": "use a sharp signage tpc-ic multitouch screen bezel thing (usb 0x04dd:0x9913) with node",
+  "main": "multitouch.js",
+  "author": "yetzt <node@yetzt.me>",
+  "license": "Unlicense",
+  "dependencies": {
+    "hideous": "0.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yetzt/node-multitouch.git"
+  },
+  "keywords": [
+    "touch",
+    "multitouch",
+    "bezel",
+    "hid",
+    "touchscreen",
+    "touchtable",
+    "sharp"
+  ],
+  "bugs": {
+    "url": "https://github.com/yetzt/node-multitouch/issues"
+  },
+  "homepage": "https://github.com/yetzt/node-multitouch#readme"
+}

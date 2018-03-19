@@ -12,7 +12,7 @@ util.inherits(multitouch, require("events").EventEmitter);
 multitouch.prototype.init = function(){
 	var self = this;
 
-	hideous({
+	self.hid = hideous({
 		scan: true,
 		attach: true,
 		interval: "30s",

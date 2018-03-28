@@ -27,6 +27,7 @@ multitouch.prototype.init = function(){
 
 			if (data[59] > 0) n = data[59]; // number of pointers
 			var seq = data.readUInt16LE(57); // sequence, maybe also time
+			var t = Date.now();
 
 			for (var o=1; o<57; o+=8) {
 				if (data[o] === 0xff) continue;
@@ -39,7 +40,8 @@ multitouch.prototype.init = function(){
 					data[o+6], // state 0-255, probably area
 					data[o+7], // state 0-3, probably pressure
 					n,
-					seq
+					seq,
+					t
 				]);
 
 			};

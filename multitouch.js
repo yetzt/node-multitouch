@@ -15,7 +15,7 @@ multitouch.prototype.init = function(){
 	self.hid = hideous({
 		scan: true,
 		attach: true,
-		interval: "30s",
+		interval: "5s",
 		filter: { vendorId: 0x04dd, productId: 0x9913, usage: 1, usagePage: 0xff00 }
 	}).on('attach', function(connection, device){
 

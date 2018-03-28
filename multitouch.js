@@ -63,6 +63,22 @@ multitouch.prototype.init = function(){
 		self.pointers[pointer[1]] = pointer;
 	});
 
+	function cleanup(){
+		var t = Date.now();
+		self.pointers = self.pointers.map(function(pointer){
+			return (pointer[0]&&t-pointer[8]>50) ? ((pointer[0]=false), (self.emit("end", pointer)), pointer) : pointer;
+		});
+		self.emit("pointers", self.pointers);
+	};
+
+	// filter on every frame
+	var cleantimer = null;
+	self.on("newseq", function(){
+		cleanup();
+		clearTimeout(cleantimer);
+		cleantimer = setTimeout(cleanup, 50);
+	});
+	
 	return this;
 	
 };

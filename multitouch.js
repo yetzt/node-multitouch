@@ -11,6 +11,8 @@ util.inherits(multitouch, require("events").EventEmitter);
 
 multitouch.prototype.init = function(){
 	var self = this;
+	// last sequence
+	self.lastseq = 0;
 
 	self.hid = hideous({
 		scan: true,
@@ -29,6 +31,8 @@ multitouch.prototype.init = function(){
 			var seq = data.readUInt16LE(57); // sequence, maybe also time
 			var t = Date.now();
 
+			// detect change in sequence
+			if (self.lastseq !== seq) self.emit("newseq"), self.lastseq = seq;
 			for (var o=1; o<57; o+=8) {
 				if (data[o] === 0xff) continue;
 

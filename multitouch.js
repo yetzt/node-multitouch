@@ -18,6 +18,7 @@ multitouch.prototype.init = function(){
 	// last sequence
 	self.lastseq = 0;
 
+	// node-hid instance via hideous
 	self.hid = hideous({
 		scan: true,
 		attach: true,
@@ -32,14 +33,22 @@ multitouch.prototype.init = function(){
 			if (data[0] !== 0x81) return; // invalid first byte
 
 			if (data[59] > 0) n = data[59]; // number of pointers
+
+			// emit raw data stream
+			// self.emit("raw", data);
+
+			// read sequence number
 			var seq = data.readUInt16LE(57); // sequence, maybe also time
 			var t = Date.now();
 
 			// detect change in sequence
 			if (self.lastseq !== seq) self.emit("newseq"), self.lastseq = seq;
+
+			// read pointers
 			for (var o=1; o<57; o+=8) {
 				if (data[o] === 0xff) continue;
-
+				
+				// emit data
 				self.emit("data",[
 					(data[o]===1), // touching
 					data[o+1], // finger id
@@ -51,7 +60,7 @@ multitouch.prototype.init = function(){
 					seq,
 					t
 				]);
-
+				
 			};
 
 		});

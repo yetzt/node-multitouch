@@ -29,6 +29,29 @@ multitouch().on("data", function(data){
 	<int b>,         // 0-3, probably area or intensity
 	<int n>,         // 1-50, total number of current pointers
 	<int s>,         // 0-~9000, sequential number
+	<int t>,         // unix offset timestamp
  ]
 ```
+
+## events
+
+### `data`
+
+raw pointer data
+
+### `start`
+
+pointer touching changed to true
+
+### `end`
+
+pointer touching changed to false
+
+### `pointers`
+
+array of all pointers
+
+### `raw`
+
+raw driver data
 

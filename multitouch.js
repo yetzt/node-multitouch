@@ -11,6 +11,10 @@ util.inherits(multitouch, require("events").EventEmitter);
 
 multitouch.prototype.init = function(){
 	var self = this;
+	
+	// pointer collection
+	self.pointers = Array(50).fill([false,0,0,0,0,0,0]);
+
 	// last sequence
 	self.lastseq = 0;
 
@@ -54,6 +58,11 @@ multitouch.prototype.init = function(){
 		
 	});
 	
+	self.on("data", function(pointer){
+		if (!self.pointers[pointer[1]] || self.pointers[pointer[1]][0] !== pointer[0]) this.emit(((!!pointer[0])?"start":"end"), pointer);
+		self.pointers[pointer[1]] = pointer;
+	});
+
 	return this;
 	
 };

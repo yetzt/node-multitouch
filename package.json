@@ -6,7 +6,7 @@
   "author": "yetzt <node@yetzt.me>",
   "license": "Unlicense",
   "dependencies": {
-    "hideous": "0.0.4"
+    "hideous": "0.0.6"
   },
   "devDependencies": {},
   "repository": {

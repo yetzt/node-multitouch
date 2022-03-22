@@ -1,12 +1,12 @@
 {
   "name": "multitouch",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "use a sharp signage tpc-ic multitouch screen bezel thing (usb 0x04dd:0x9913) with node",
   "main": "multitouch.js",
   "author": "yetzt <node@yetzt.me>",
   "license": "Unlicense",
   "dependencies": {
-    "hideous": "^0.0.8"
+    "hideous": "^0.0.9"
   },
   "repository": {
     "type": "git",
